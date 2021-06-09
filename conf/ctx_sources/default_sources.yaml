@@ -5,7 +5,7 @@ dpr_wiki:
   file: data.wikipedia_split.psgs_w100
   id_prefix: 'wiki:'
 
-dpr_thwiki-20210520_split-250:
+dpr_thwiki-20210520_split-300:
   _target_: dpr.data.retriever_data.CsvCtxSrc
-  file: data.thwikipedia_split.psgs.newmm_word-250
+  file: data.thwikipedia_split.psgs.newmm_word-300
   id_prefix: 'thwiki:'
