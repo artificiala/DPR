@@ -4,3 +4,8 @@ dpr_wiki:
   _target_: dpr.data.retriever_data.CsvCtxSrc
   file: data.wikipedia_split.psgs_w100
   id_prefix: 'wiki:'
+
+dpr_thwiki-20210520_split-250:
+  _target_: dpr.data.retriever_data.CsvCtxSrc
+  file: data.thwikipedia_split.psgs.newmm_word-250
+  id_prefix: 'thwiki:'
