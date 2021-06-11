@@ -46,8 +46,8 @@ curatedtrec_dev:
     
 thwiki_split_w300_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: data.thwiki_split.thwiki-20210520_split_newmm-300.thwiki_split_w300.train
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20210520_split_newmm-300/thwiki_split_w300.train.json
 
 thwiki_split_w300_validation:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: data.thwiki_split.thwiki-20210520_split_newmm-300.thwiki_split_w300.validation
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20210520_split_newmm-300/thwiki_split_w300.validation.json
