@@ -4,10 +4,10 @@
 encoder_model_type: hf_bert
 
 # HuggingFace's config name for model initialization
-pretrained_model_cfg: airesearchth/wangchanberta-base-wiki-20210520-spm
+pretrained_model_cfg: /workspace/hf_models/wangchanberta-base-wiki-20210520-spm/conifg.json
 
 # Some encoders need to be initialized from a file
-pretrained_file:
+pretrained_file: /workspace/hf_models/wangchanberta-base-wiki-20210520-spm/pytorch_model.bin
 
 # Extra linear layer on top of standard bert/roberta encoder
 projection_dim: 0
