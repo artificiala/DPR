@@ -4,7 +4,7 @@
 encoder_model_type: hf_bert
 
 # HuggingFace's config name for model initialization
-pretrained_model_cfg: /workspace/hf_models/wangchanberta-base-wiki-20210520-spm/conifg.json
+pretrained_model_cfg: /workspace/hf_models/wangchanberta-base-wiki-20210520-spm/
 
 # Some encoders need to be initialized from a file
 pretrained_file: /workspace/hf_models/wangchanberta-base-wiki-20210520-spm/pytorch_model.bin
