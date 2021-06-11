@@ -7,5 +7,5 @@ dpr_wiki:
 
 dpr_thwiki-20210520_split-300:
   _target_: dpr.data.retriever_data.CsvCtxSrc
-  file: data.thwikipedia_split.thwiki-20210520_split_newmm-300
+  file: data.thwiki_split.thwiki-20210520_split_newmm-300
   id_prefix: 'thwiki:'
