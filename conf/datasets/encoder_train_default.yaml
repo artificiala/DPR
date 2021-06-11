@@ -44,3 +44,10 @@ curatedtrec_dev:
   _target_: dpr.data.biencoder_data.JsonQADataset
   file: data.retriever.curatedtrec-dev
     
+thwiki_split_w300_train:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.thwiki_split.thwiki-20210520_split_newmm-300.thwiki_split_w300.train
+
+thwiki_split_w300_validation:
+  _target_: dpr.data.biencoder_data.JsonQADataset
+  file: data.thwiki_split.thwiki-20210520_split_newmm-300.thwiki_split_w300.validation
