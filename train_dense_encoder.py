@@ -234,6 +234,7 @@ class BiEncoderTrainer(object):
                 self.best_validation_result = validation_loss
                 self.best_cp_name = cp_name
                 logger.info("New Best validation checkpoint %s", cp_name)
+                self._save_checkpoint(scheduler, f'{epoch}.best', iteration)
 
     def validate_nll(self) -> float:
         logger.info("NLL validation ...")
@@ -596,7 +597,7 @@ class BiEncoderTrainer(object):
         logger.info("Av Loss per epoch=%f", epoch_loss)
         logger.info("epoch total correct predictions=%d", epoch_correct_predictions)
 
-    def _save_checkpoint(self, scheduler, epoch: int, offset: int) -> str:
+    def _save_checkpoint(self, scheduler, epoch: str, offset: int) -> str:
         cfg = self.cfg
         model_to_save = get_model_obj(self.biencoder)
         cp = os.path.join(cfg.output_dir, cfg.checkpoint_file_name + "." + str(epoch))
