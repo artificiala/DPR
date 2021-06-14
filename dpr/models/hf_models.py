@@ -131,7 +131,7 @@ def _add_special_tokens(tokenizer, special_tokens):
     logger.info("Tokenizer's all_special_tokens %s", tokenizer.all_special_tokens)
 
 
-def get_roberta_tensorizer(args, tokenizer=None):
+def get_hf_tensorizer(args, tokenizer=None):
     if not tokenizer:
         tokenizer = get_hf_tokenizer(
             args.pretrained_model_cfg, do_lower_case=args.do_lower_case
@@ -330,8 +330,8 @@ class BertTensorizer(Tensorizer):
         return self.tokenizer.vocab[token]
 
 
-class RobertaTensorizer(BertTensorizer):
+class HfTensorizer(BertTensorizer):
     def __init__(self, tokenizer, max_length: int, pad_to_max: bool = True):
-        super(RobertaTensorizer, self).__init__(
+        super(HfTensorizer, self).__init__(
             tokenizer, max_length, pad_to_max=pad_to_max
         )
