@@ -1,7 +1,7 @@
 # extractive reader configuration
 
 defaults:
-  - encoder: hf_bert
+  - encoder: hf_roberta
   - train: extractive_reader_default
 
 # A trained reader checkpoint file to initialize the model
