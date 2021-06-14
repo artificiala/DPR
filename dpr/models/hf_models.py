@@ -136,7 +136,7 @@ def get_hf_tensorizer(args, tokenizer=None):
         tokenizer = get_hf_tokenizer(
             args.pretrained_model_cfg, do_lower_case=args.do_lower_case
         )
-    return RobertaTensorizer(tokenizer, args.sequence_length)
+    return HfTensorizer(tokenizer, args.sequence_length)
 
 
 def get_optimizer(
@@ -200,7 +200,7 @@ class HFBertEncoder(BertModel):
         pretrained: bool = True,
         **kwargs
     ) -> BertModel:
-        cfg = BertConfig.from_pretrained(cfg_name if cfg_name else "bert-base-uncased")
+        cfg = AutoConfig.from_pretrained(cfg_name if cfg_name else "bert-base-uncased")
         if dropout != 0:
             cfg.attention_probs_dropout_prob = dropout
             cfg.hidden_dropout_prob = dropout
