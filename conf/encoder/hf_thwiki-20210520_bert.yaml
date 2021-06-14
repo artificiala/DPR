@@ -1,7 +1,7 @@
 # @package _group_
 
-# model type. One of [hf_bert, pytext_bert, fairseq_roberta]
-encoder_model_type: hf_bert
+# model type. One of [hf_bert, hf_roberta, pytext_bert, fairseq_roberta]
+encoder_model_type: hf_roberta
 
 # HuggingFace's config name for model initialization
 pretrained_model_cfg: /workspace/hf_models/wangchanberta-base-wiki-20210520-spm/
