@@ -31,3 +31,11 @@ webq_test:
 curatedtrec_test:
   _target_: dpr.data.retriever_data.CsvQASrc
   file: data.retriever.qas.curatedtrec-test
+
+thwiki_qas_test:
+  _target_: dpr.data.retriever_data.CsvQASrc
+  file: /workspace/DPR/downloads/data/thwiki_qas/thwiki-20210520_split_newmm-30.test.json
+
+thwiki_qas_validation:
+  _target_: dpr.data.retriever_data.CsvQASrc
+  file: /workspace/DPR/downloads/data/thwiki_qas/thwiki-20210520_split_newmm-30.validation.json
