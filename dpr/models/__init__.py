@@ -80,7 +80,7 @@ TENSORIZER_INITIALIZERS = {
     # 'hf_bert': init_hf_bert_tenzorizer,
     'hf_roberta': init_hf_camembert_tenzorizer,
     # 'hf_roberta': init_hf_roberta_tenzorizer,
-    'pytext_bert': init_hf_bert_tenzorizer,  # using HF's code as of now
+    # 'pytext_bert': init_hf_bert_tenzorizer,  # using HF's code as of now
     'fairseq_roberta': init_hf_roberta_tenzorizer,  # using HF's code as of now
 }
 
