@@ -15,7 +15,7 @@ from typing import Tuple
 import torch
 from torch import Tensor as T
 from torch import nn
-from transformers import AutoConfig
+from transformers import AutoConfig, AutoTokenizer
 from transformers.modeling_bert import BertModel
 from transformers.optimization import AdamW
 from transformers.tokenization_bert import BertTokenizer
@@ -178,7 +178,7 @@ def get_optimizer(
 
 
 def get_bert_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
-    return BertTokenizer.from_pretrained(
+    return AutoTokenizer.from_pretrained(
         pretrained_cfg_name, do_lower_case=do_lower_case
     )
 
