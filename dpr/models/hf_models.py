@@ -130,12 +130,20 @@ def _add_special_tokens(tokenizer, special_tokens):
     logger.info("Tokenizer's all_special_tokens %s", tokenizer.all_special_tokens)
 
 
-def get_hf_tensorizer(args, tokenizer=None):
+def get_roberta_tensorizer(args, tokenizer=None):
     if not tokenizer:
-        tokenizer = get_hf_tokenizer(
+        tokenizer = get_roberta_tokenizer(
             args.pretrained_model_cfg, do_lower_case=args.do_lower_case
         )
-    return HfTensorizer(tokenizer, args.sequence_length)
+    return RobertaTensorizer(tokenizer, args.sequence_length)
+
+def get_camembert_tensorizer(args, tokenizer=None):
+    if not tokenizer:
+        tokenizer = get_camembert_tokenizer(
+            args.pretrained_model_cfg, do_lower_case=args.do_lower_case
+        )
+    return CamembertTensorizer(tokenizer, args.sequence_length)
+
 
 
 def get_optimizer(
@@ -174,9 +182,15 @@ def get_bert_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
     )
 
 
-def get_hf_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
+def get_roberta_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
     # still uses HF code for tokenizer since they are the same
-    return AutoTokenizer.from_pretrained(
+    return RobertaTokenizer.from_pretrained(
+        pretrained_cfg_name, do_lower_case=do_lower_case
+    )
+
+def get_camembert_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
+    # still uses HF code for tokenizer since they are the same
+    return CamembertTokenizer.from_pretrained(
         pretrained_cfg_name, do_lower_case=do_lower_case
     )
 
@@ -329,8 +343,14 @@ class BertTensorizer(Tensorizer):
         return self.tokenizer.vocab[token]
 
 
-class HfTensorizer(BertTensorizer):
+class RobertaTensorizer(BertTensorizer):
     def __init__(self, tokenizer, max_length: int, pad_to_max: bool = True):
-        super(HfTensorizer, self).__init__(
+        super(RobertaTensorizer, self).__init__(
+            tokenizer, max_length, pad_to_max=pad_to_max
+        )
+
+class CamembertTensorizer(BertTensorizer):
+    def __init__(self, tokenizer, max_length: int, pad_to_max: bool = True):
+        super(CamembertTensorizer, self).__init__(
             tokenizer, max_length, pad_to_max=pad_to_max
         )
