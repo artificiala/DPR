@@ -11,7 +11,7 @@ Encoder model wrappers based on HuggingFace code
 
 import logging
 from typing import Tuple
-
+import os
 import torch
 from torch import Tensor as T
 from torch import nn
@@ -230,9 +230,8 @@ def get_roberta_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
 
 def get_camembert_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
     # still uses HF code for tokenizer since they are the same
-    return CamembertTokenizer.from_pretrained(
-        pretrained_cfg_name, do_lower_case=do_lower_case
-    )
+    return CamembertTokenizer.from_pretrained(os.path.join(pretrained_cfg_name, 'sentencepiece.bpe.model'),
+            add_special_tokens=['<s>NOTUSED', '</s>NOTUSED', '▁'])
 
 
 # class HFBertEncoder(BertModel):
