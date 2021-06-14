@@ -237,7 +237,7 @@ def save_results(
         )
 
     with open(out_file, "w") as writer:
-        writer.write(json.dumps(merged_data, indent=4) + "\n")
+        writer.write(json.dumps(merged_data, indent=4, ensure_ascii=False) + "\n")
     logger.info("Saved results * scores  to %s", out_file)
 
 
