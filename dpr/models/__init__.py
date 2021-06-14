@@ -67,6 +67,7 @@ def init_hf_camembert_tenzorizer(args, **kwargs):
 
 BIENCODER_INITIALIZERS = {
     'hf_bert': init_hf_bert_biencoder,
+    'hf_roberta': init_hf_roberta_biencoder,
     'pytext_bert': init_pytext_bert_biencoder,
     'fairseq_roberta': init_fairseq_roberta_biencoder,
 }
