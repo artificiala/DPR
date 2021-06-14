@@ -230,7 +230,7 @@ def get_roberta_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
 
 def get_camembert_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
     # still uses HF code for tokenizer since they are the same
-    return CamembertTokenizer.from_pretrained(os.path.join(pretrained_cfg_name, 'sentencepiece.bpe.model'),
+    return CamembertTokenizer.from_pretrained(pretrained_cfg_name,
             add_special_tokens=['<s>NOTUSED', '</s>NOTUSED', '▁'])
 
 
