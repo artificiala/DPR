@@ -171,6 +171,7 @@ def _add_special_tokens(tokenizer, special_tokens):
 
 
 def get_roberta_tensorizer(cfg, tokenizer=None):
+    sequence_length = cfg.encoder.sequence_length
     pretrained_model_cfg = cfg.encoder.pretrained_model_cfg
     if not tokenizer:
         
@@ -180,12 +181,13 @@ def get_roberta_tensorizer(cfg, tokenizer=None):
     return RobertaTensorizer(tokenizer, cfg.sequence_length)
 
 def get_camembert_tensorizer(cfg, tokenizer=None):
+    sequence_length = cfg.encoder.sequence_length
     pretrained_model_cfg = cfg.encoder.pretrained_model_cfg
     if not tokenizer:
         tokenizer = get_camembert_tokenizer(
             pretrained_model_cfg, do_lower_case=cfg.do_lower_case
         )
-    return CamembertTensorizer(tokenizer, cfg.sequence_length)
+    return CamembertTensorizer(tokenizer, sequence_length)
 
 
 
