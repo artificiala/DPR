@@ -16,10 +16,11 @@ import torch
 from torch import Tensor as T
 from torch import nn
 from transformers.modeling_bert import BertConfig, BertModel
+from transformers import AutoModel, AutoConfig
 from transformers.optimization import AdamW
 from transformers.tokenization_bert import BertTokenizer
 from transformers.tokenization_roberta import RobertaTokenizer
-
+from transformers import AutoTokenizer
 from dpr.models.biencoder import BiEncoder
 from dpr.utils.data_utils import Tensorizer
 from .reader import Reader
@@ -132,7 +133,7 @@ def _add_special_tokens(tokenizer, special_tokens):
 
 def get_roberta_tensorizer(args, tokenizer=None):
     if not tokenizer:
-        tokenizer = get_roberta_tokenizer(
+        tokenizer = get_hf_tokenizer(
             args.pretrained_model_cfg, do_lower_case=args.do_lower_case
         )
     return RobertaTensorizer(tokenizer, args.sequence_length)
@@ -174,9 +175,9 @@ def get_bert_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
     )
 
 
-def get_roberta_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
+def get_hf_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
     # still uses HF code for tokenizer since they are the same
-    return RobertaTokenizer.from_pretrained(
+    return AutoTokenizer.from_pretrained(
         pretrained_cfg_name, do_lower_case=do_lower_case
     )
 
