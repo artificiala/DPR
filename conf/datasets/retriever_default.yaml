@@ -39,3 +39,7 @@ thwiki_qas_test:
 thwiki_qas_validation:
   _target_: dpr.data.retriever_data.CsvQASrc
   file: /workspace/DPR/downloads/data/thwiki_qas/thwiki-20210520_split_newmm-300/validation.csv
+
+thwiki_qas_train:
+  _target_: dpr.data.retriever_data.CsvQASrc
+  file: /workspace/DPR/downloads/data/thwiki_qas/thwiki-20210520_split_newmm-300/train.csv
