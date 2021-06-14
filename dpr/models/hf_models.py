@@ -170,19 +170,22 @@ def _add_special_tokens(tokenizer, special_tokens):
     logger.info("Tokenizer's all_special_tokens %s", tokenizer.all_special_tokens)
 
 
-def get_roberta_tensorizer(args, tokenizer=None):
+def get_roberta_tensorizer(cfg, tokenizer=None):
+    pretrained_model_cfg = cfg.encoder.pretrained_model_cfg
     if not tokenizer:
+        
         tokenizer = get_roberta_tokenizer(
-            args.pretrained_model_cfg, do_lower_case=args.do_lower_case
+            pretrained_model_cfg, do_lower_case=cfg.do_lower_case
         )
-    return RobertaTensorizer(tokenizer, args.sequence_length)
+    return RobertaTensorizer(tokenizer, cfg.sequence_length)
 
-def get_camembert_tensorizer(args, tokenizer=None):
+def get_camembert_tensorizer(cfg, tokenizer=None):
+    pretrained_model_cfg = cfg.encoder.pretrained_model_cfg
     if not tokenizer:
         tokenizer = get_camembert_tokenizer(
-            args.pretrained_model_cfg, do_lower_case=args.do_lower_case
+            pretrained_model_cfg, do_lower_case=cfg.do_lower_case
         )
-    return CamembertTensorizer(tokenizer, args.sequence_length)
+    return CamembertTensorizer(tokenizer, cfg.sequence_length)
 
 
 
