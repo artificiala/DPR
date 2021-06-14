@@ -178,7 +178,7 @@ def get_roberta_tensorizer(cfg, tokenizer=None):
         tokenizer = get_roberta_tokenizer(
             pretrained_model_cfg, do_lower_case=cfg.do_lower_case
         )
-    return RobertaTensorizer(tokenizer, cfg.sequence_length)
+    return RobertaTensorizer(tokenizer, sequence_length)
 
 def get_camembert_tensorizer(cfg, tokenizer=None):
     sequence_length = cfg.encoder.sequence_length
