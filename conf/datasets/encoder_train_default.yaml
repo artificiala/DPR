@@ -70,8 +70,8 @@ thwiki_split_w300_hn_bm25_2_validation:
 
 thwiki_split_w300_hn_bm25_31_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20210520_split_newmm-300_hn-bm25-2/thwiki_split_w300_hn-bm25-31.train.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20210520_split_newmm-300_hn-bm25-31/thwiki_split_w300_hn-bm25-31.train.json
 
 thwiki_split_w300_hn_bm25_31_validation:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20210520_split_newmm-300_hn-bm25-2/thwiki_split_w300_hn-bm25-31.validation.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20210520_split_newmm-300_hn-bm25-31/thwiki_split_w300_hn-bm25-31.validation.json
