@@ -1,5 +1,5 @@
 defaults:
-  - encoder: hf_roberta # defines encoder initialization parameters
+  - encoder: hf_bert # defines encoder initialization parameters
   - datasets: retriever_default # contains a list of all possible sources of queries for evaluation. Specific set is selected by qa_dataset parameter
   - ctx_sources: default_sources # contains a list of all possible passage sources. Specific passages sources selected by ctx_datatsets parameter
 
@@ -32,7 +32,7 @@ validation_workers: 16
 batch_size: 128
 
 # Whether to lower case the input text. Set True for uncased models, False for the cased ones.
-do_lower_case: False
+do_lower_case: True
 
 # The attribute name of encoder to use for queries. Options for the BiEncoder model: question_model, ctx_model
 # question_model is used if this param is empty
