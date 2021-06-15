@@ -9,3 +9,8 @@ dpr_thwiki-20210520_split-300:
   _target_: dpr.data.retriever_data.CsvCtxSrc
   file:  /workspace/DPR/downloads/data/thwiki_split_passages/thwiki-20210520_split_newmm-300.tsv
   id_prefix: 'thwiki:'
+
+dpr_thwiki-20210520_split-150:
+  _target_: dpr.data.retriever_data.CsvCtxSrc
+  file:  /workspace/DPR/downloads/data/thwiki_split_passages/thwiki-20210520_split_newmm-150.tsv
+  id_prefix: 'thwiki:'
