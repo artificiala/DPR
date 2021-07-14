@@ -13,7 +13,7 @@ pretrained_file: /workspace/hf_models/wangchanberta-base-wiki-20210520-news-spm/
 projection_dim: 0
 
 # Max length of the encoder input sequence
-sequence_length: 512
+sequence_length: 510
 
 dropout: 0.1
 
