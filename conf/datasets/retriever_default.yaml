@@ -43,3 +43,15 @@ thwiki_qas_validation:
 thwiki_qas_train:
   _target_: dpr.data.retriever_data.CsvQASrc
   file: /workspace/DPR/downloads/data/thwiki_qas/thwiki-20210520_split_newmm-300/train.csv
+
+thwiki_qas_15k_test:
+  _target_: dpr.data.retriever_data.CsvQASrc
+  file: /workspace/DPR/downloads/data/thwiki_qas/thwiki-qas_15k/test.csv
+
+thwiki_qas_15k_validation:
+  _target_: dpr.data.retriever_data.CsvQASrc
+  file: /workspace/DPR/downloads/data/thwiki_qas/thwiki-qas_15k/validation.csv
+
+thwiki_qas_15k_train:
+  _target_: dpr.data.retriever_data.CsvQASrc
+  file: /workspace/DPR/downloads/data/thwiki_qas/thwiki-qas_15k/train.csv
