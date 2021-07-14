@@ -54,51 +54,51 @@ thwiki_split_w300_validation:
 
 thwiki_15k_split_w300_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300/thwiki-15k_split_w300.train.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300/thwiki_15k_split_w300.train.json
 
 thwiki_15k_split_w300_validation:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300/thwiki-15k_split_w300.validation.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300/thwiki_15k_split_w300.validation.json
 
 thwiki_15k_split_w150_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150/thwiki-15k_split_w150.train.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150/thwiki_15k_split_w150.train.json
 
 thwiki_15k_split_w150_validation:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150/thwiki-15k_split_w150.validation.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150/thwiki_15k_split_w150.validation.json
 
 thwiki_15k_split_w300_hn_bm25_1_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300_hn-bm25-1/thwiki-15k_split_w300_hn-bm25-1.train.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300_hn-bm25-1/thwiki_15k_split_w300_hn-bm25-1.train.json
 
 thwiki_15k_split_w300_hn_bm25_1_validation:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300_hn-bm25-1/thwiki-15k_split_w300_hn-bm25-1.validation.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300_hn-bm25-1/thwiki_15k_split_w300_hn-bm25-1.validation.json
 
 thwiki_15k_split_w150_hn_bm25_1_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150_hn-bm25-1/thwiki-15k_split_w150_hn-bm25-1.train.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150_hn-bm25-1/thwiki-_5k_split_w150_hn-bm25-1.train.json
 
 thwiki_15k_split_w150_hn_bm25_1_validation:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150_hn-bm25-1/thwiki-15k_split_w150_hn-bm25-1.validation.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150_hn-bm25-1/thwiki_15k_split_w150_hn-bm25-1.validation.json
 
 thwiki_15k_split_w300_hn_bm25_2_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300_hn-bm25-2/thwiki-15k_split_w300_hn-bm25-2.train.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300_hn-bm25-2/thwiki_15k_split_w300_hn-bm25-2.train.json
 
 thwiki_15k_split_w300_hn_bm25_2_validation:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300_hn-bm25-2/thwiki-15k_split_w300_hn-bm25-2.validation.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-300_hn-bm25-2/thwiki_15k_split_w300_hn-bm25-2.validation.json
 
 thwiki_15k_split_w150_hn_bm25_2_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150_hn-bm25-2/thwiki-15k_split_w150_hn-bm25-2.train.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150_hn-bm25-2/thwiki_15k_split_w150_hn-bm25-2.train.json
 
 thwiki_15k_split_w150_hn_bm25_2_validation:
   _target_: dpr.data.biencoder_data.JsonQADataset
-  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150_hn-bm25-2/thwiki-15k_split_w150_hn-bm25-2.validation.json
+  file: /workspace/DPR/downloads/data/thwiki_split/thwiki-20171217_15k_split_newmm-150_hn-bm25-2/thwiki_15k_split_w150_hn-bm25-2.validation.json
 
 thwiki_split_w150_hn_bm25_1_train:
   _target_: dpr.data.biencoder_data.JsonQADataset
