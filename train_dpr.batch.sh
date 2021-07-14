@@ -20,7 +20,7 @@ do
                 validation_dataset="thwiki_15k_split_w${CHUNK_SIZE}_validation"
             else
                 train_config="biencoder_inbatch.thwiki-15k_hn-${HN}.v1"
-                HN_TEXT="hn_bm25_${HN}_"
+                HN_TEXT="hn_bm25_${HN}_"cd
                 export EXP_NAME="exp002.v1.batched_thwiki-20210520-bert_thwiki-split_w${CHUNK_SIZE}_hn-${HN}"
                 train_dataset="thwiki_15k_split_w${CHUNK_SIZE}_${HN_TEXT}train"
                 validation_dataset="thwiki_15k_split_w${CHUNK_SIZE}_${HN_TEXT}validation"
@@ -39,6 +39,8 @@ do
             dev_datasets=[${validation_dataset}] \
             output_dir=/workspace/checkpoints/dpr/${EXP_NAME} |& tee -a /workspace/logs/dpr/${EXP_NAME}/encoder_training.log
 
+            mv /workspace/checkpoints/dpr/${EXP_NAME}/dpr_biencoder.best /workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best
+            rm /workspace/checkpoints/dpr/${EXP_NAME}/dpr_biencoder.*
         done
     done
 done
