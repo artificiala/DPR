@@ -18,6 +18,7 @@ import sys
 import time
 from typing import Tuple
 
+import wandb
 import hydra
 import torch
 from omegaconf import DictConfig, OmegaConf
@@ -209,8 +210,9 @@ class BiEncoderTrainer(object):
             logger.info(
                 "Training finished. Best validation checkpoint %s", self.best_cp_name
             )
+            wandb.finish()
 
-    def validate_and_save(self, epoch: int, iteration: int, scheduler):
+    def validate_and_save(self, epoch: int, iteration: int, scheduler, max_train_iterations: int):
         cfg = self.cfg
         # for distributed mode, save checkpoint for only one process
         save_cp = cfg.local_rank in [-1, 0]
@@ -222,9 +224,9 @@ class BiEncoderTrainer(object):
             validation_loss = 0
         else:
             if epoch >= cfg.val_av_rank_start_epoch:
-                validation_loss = self.validate_average_rank()
+                validation_loss = self.validate_average_rank(epoch, max_train_iterations)
             else:
-                validation_loss = self.validate_nll()
+                validation_loss = self.validate_nll(epoch, max_train_iterations)
 
         if save_cp:
             cp_name = self._save_checkpoint(scheduler, epoch, iteration)
@@ -236,7 +238,7 @@ class BiEncoderTrainer(object):
                 logger.info("New Best validation checkpoint %s", cp_name)
                 self._save_checkpoint(scheduler, f'best', iteration)
 
-    def validate_nll(self) -> float:
+    def validate_nll(self, epoch, max_train_iterations) -> float:
         logger.info("NLL validation ...")
         cfg = self.cfg
         self.biencoder.eval()
@@ -305,9 +307,15 @@ class BiEncoderTrainer(object):
             total_samples,
             correct_ratio,
         )
+        if cfg.local_rank in [-1, 0]:
+            self._wandb.log({
+                'val/loss': total_loss,
+                'val/correct_ratio': correct_ratio,
+                "train/global_step": (epoch + 1) * max_train_iterations,
+        })
         return total_loss
 
-    def validate_average_rank(self) -> float:
+    def validate_average_rank(self, epoch, max_train_iterations) -> float:
         """
         Validates biencoder model using each question's gold passage's rank across the set of passages from the dataset.
         It generates vectors for specified amount of negative passages from each question (see --val_av_rank_xxx params)
@@ -458,6 +466,11 @@ class BiEncoderTrainer(object):
         logger.info(
             "Av.rank validation: average rank %s, total questions=%d", av_rank, q_num
         )
+        if cfg.local_rank in [-1, 0]:
+            self._wandb.log({
+                'val/av_rank': av_rank, 
+                "train/global_step": (epoch + 1) * max_train_iterations,
+        })
         return av_rank
 
     def _train_epoch(
@@ -566,6 +579,12 @@ class BiEncoderTrainer(object):
                     loss.item(),
                     lr,
                 )
+                if cfg.local_rank in [-1, 0]:
+                    self._wandb.log({
+                            'train/loss': loss.item(),
+                            'learning_rate': lr,
+                            "train/global_step": (epoch * epoch_batches) + data_iteration,
+                        })
 
             if (i + 1) % rolling_loss_step == 0:
                 logger.info("Train batch %d", data_iteration)
@@ -586,7 +605,7 @@ class BiEncoderTrainer(object):
                     epoch_batches,
                 )
                 self.validate_and_save(
-                    epoch, train_data_iterator.get_iteration(), scheduler
+                    epoch, train_data_iterator.get_iteration(), scheduler, train_data_iterator.max_iterations
                 )
                 self.biencoder.train()
 
@@ -798,6 +817,18 @@ def main(cfg: DictConfig):
 
     if cfg.output_dir is not None:
         os.makedirs(cfg.output_dir, exist_ok=True)
+
+    wandb_project = os.getenv("WANDB_PROJECT", "huggingface"),
+    wandb_notes = os.getenv("WANDB_NOTES", ""),
+    wandb_run_name = os.getenv("WANDB_RUN_NAME", ""),
+    wandb.init(
+        project=wandb_project,
+        notes=wandb_notes,
+        name=wandb_run_name,
+        config=cfg,
+    )
+    wandb.define_metric("train/global_step")
+    wandb.define_metric("*", step_metric="train/global_step", step_sync=True)
 
     cfg = setup_cfg_gpu(cfg)
     set_seed(cfg)
