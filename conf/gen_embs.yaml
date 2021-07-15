@@ -40,11 +40,11 @@ tables_split_type: type1
 # TODO: move to a conf group
 # local_rank for distributed training on gpus
 local_rank: -1
-device: cuda:0
+device:
 distributed_world_size:
 distributed_port:
 no_cuda: False
-n_gpu: 1
+n_gpu:
 fp16: False
 
 # For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
