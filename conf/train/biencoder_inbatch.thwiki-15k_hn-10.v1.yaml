@@ -17,7 +17,7 @@ warmup_steps: 500
 gradient_accumulation_steps: 1
 
 # Total number of training epochs to perform.
-num_train_epochs: 1
+num_train_epochs: 2
 eval_per_epoch: 1
 hard_negatives: 10
 other_negatives: 0
