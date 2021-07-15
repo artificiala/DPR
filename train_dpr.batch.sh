@@ -1,6 +1,6 @@
 for ENCODER in hf_thwiki_20210520_bert hf_thwiki_20210520_news_bert
 do 
-    for CHUNK_SIZE in 300 150
+    for CHUNK_SIZE in 150
     do
         for HN in 0 1 2 10
         do
@@ -32,7 +32,8 @@ do
             rm  /workspace/logs/dpr/${EXP_NAME}/encoder_training.log
 
             echo "EXP NAME: ${EXP_NAME}"
-
+            export WANDB_PROJECT=thai2transformers_dpr
+            export WANDB_RUN_NAME=$EXP_NAME
             CUDA_VISIBLE_DEVICES=4,5,6,7 python -m torch.distributed.launch --nproc_per_node=4 train_dense_encoder.py \
             train=${train_config} \
             encoder=${ENCODER} \
