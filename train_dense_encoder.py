@@ -817,18 +817,18 @@ def main(cfg: DictConfig):
 
     if cfg.output_dir is not None:
         os.makedirs(cfg.output_dir, exist_ok=True)
-
-    wandb_project = os.getenv("WANDB_PROJECT", "huggingface")
-    wandb_notes = os.getenv("WANDB_NOTES", "")
-    wandb_run_name = os.getenv("WANDB_RUN_NAME", "")
-    wandb.init(
-        project=wandb_project,
-        notes=wandb_notes,
-        name=wandb_run_name,
-        config=cfg,
-    )
-    wandb.define_metric("train/global_step")
-    wandb.define_metric("*", step_metric="train/global_step", step_sync=True)
+    if cfg.local_rank in [-1, 0]:
+        wandb_project = os.getenv("WANDB_PROJECT", "huggingface")
+        wandb_notes = os.getenv("WANDB_NOTES", "")
+        wandb_run_name = os.getenv("WANDB_RUN_NAME", "")
+        wandb.init(
+            project=wandb_project,
+            notes=wandb_notes,
+            name=wandb_run_name,
+            config=cfg,
+        )
+        wandb.define_metric("train/global_step")
+        wandb.define_metric("*", step_metric="train/global_step", step_sync=True)
 
     cfg = setup_cfg_gpu(cfg)
     set_seed(cfg)
