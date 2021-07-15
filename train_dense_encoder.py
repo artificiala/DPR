@@ -308,7 +308,7 @@ class BiEncoderTrainer(object):
             correct_ratio,
         )
         if cfg.local_rank in [-1, 0]:
-            self._wandb.log({
+            wandb.log({
                 'val/loss': total_loss,
                 'val/correct_ratio': correct_ratio,
                 "train/global_step": (epoch + 1) * max_train_iterations,
@@ -467,7 +467,7 @@ class BiEncoderTrainer(object):
             "Av.rank validation: average rank %s, total questions=%d", av_rank, q_num
         )
         if cfg.local_rank in [-1, 0]:
-            self._wandb.log({
+            wandb.log({
                 'val/av_rank': av_rank, 
                 "train/global_step": (epoch + 1) * max_train_iterations,
         })
@@ -580,7 +580,7 @@ class BiEncoderTrainer(object):
                     lr,
                 )
                 if cfg.local_rank in [-1, 0]:
-                    self._wandb.log({
+                    wandb.log({
                             'train/loss': loss.item(),
                             'learning_rate': lr,
                             "train/global_step": (epoch * epoch_batches) + data_iteration,
