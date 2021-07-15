@@ -34,7 +34,7 @@ do
             echo "EXP NAME: ${EXP_NAME}"
             export WANDB_PROJECT=thai2transformers_dpr
             export WANDB_RUN_NAME=$EXP_NAME
-            CUDA_VISIBLE_DEVICES=4,5,6,7 python -m torch.distributed.launch --nproc_per_node=4 train_dense_encoder.py \
+            python -m torch.distributed.launch --nproc_per_node=4 train_dense_encoder.py \
             train=${train_config} \
             encoder=${ENCODER} \
             train_datasets=[${train_dataset}] \
