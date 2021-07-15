@@ -818,9 +818,9 @@ def main(cfg: DictConfig):
     if cfg.output_dir is not None:
         os.makedirs(cfg.output_dir, exist_ok=True)
 
-    wandb_project = os.getenv("WANDB_PROJECT", "huggingface"),
-    wandb_notes = os.getenv("WANDB_NOTES", ""),
-    wandb_run_name = os.getenv("WANDB_RUN_NAME", ""),
+    wandb_project = os.getenv("WANDB_PROJECT", "huggingface")
+    wandb_notes = os.getenv("WANDB_NOTES", "")
+    wandb_run_name = os.getenv("WANDB_RUN_NAME", "")
     wandb.init(
         project=wandb_project,
         notes=wandb_notes,
