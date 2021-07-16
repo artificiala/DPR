@@ -1,6 +1,6 @@
 for ENCODER in hf_thwiki_20210520_bert hf_thwiki_20210520_news_bert
 do 
-    for CHUNK_SIZE in 150
+    for CHUNK_SIZE in 150 300
     do
         for HN in 0 1 2 10
         do
@@ -13,15 +13,15 @@ do
             export HN_TEXT=""
             if [ $HN == 0 ]
             then
-                train_config="biencoder_inbatch.thwiki-15k.v1"
+                train_config="biencoder_inbatch.thwiki-15k.v2"
                 HN_TEXT=""
-                export EXP_NAME="exp002.v1.batched_thwiki-20210520-bert_thwiki-split_w${CHUNK_SIZE}"
+                export EXP_NAME="exp002.v2.batched.${ENCODER}.thwiki-split_w${CHUNK_SIZE}"
                 train_dataset="thwiki_15k_split_w${CHUNK_SIZE}_train"
                 validation_dataset="thwiki_15k_split_w${CHUNK_SIZE}_validation"
             else
-                train_config="biencoder_inbatch.thwiki-15k_hn-${HN}.v1"
+                train_config="biencoder_inbatch.thwiki-15k_hn-${HN}.v2"
                 HN_TEXT="hn_bm25_${HN}_"
-                export EXP_NAME="exp002.v1.batched_thwiki-20210520-bert_thwiki-split_w${CHUNK_SIZE}_hn-${HN}"
+                export EXP_NAME="exp002.v2.batched.${ENCODER}.thwiki-split_w${CHUNK_SIZE}_hn-${HN}"
                 train_dataset="thwiki_15k_split_w${CHUNK_SIZE}_${HN_TEXT}train"
                 validation_dataset="thwiki_15k_split_w${CHUNK_SIZE}_${HN_TEXT}validation"
 
