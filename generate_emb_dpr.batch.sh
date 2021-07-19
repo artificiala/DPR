@@ -1,4 +1,4 @@
-for ENCODER in hf_thwiki_20210520_bert hf_thwiki_20210520_news_bert
+for ENCODER in hf_thwiki_20210520_bert
 do 
     for CHUNK_SIZE in 150 300
     do
