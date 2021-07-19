@@ -18,13 +18,16 @@ do
             
             echo "EXP NAME: ${EXP_NAME}"
 
-            CUDA_VISIBLE_DEVICES=1,2,3,4,5,6,7 python generate_dense_embeddings.py \
-                model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
-                ctx_src=dpr_thwiki-20171217_split-${CHUNK_SIZE} \
-                shard_id=0 num_shards=1 \
-                batch_size=680 \
-                out_file=/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@ |& tee -a /workspace/logs/generate_dense_embeddings/${RESULT_NAME}.log
-
+            if [ -f "/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@" ]; then
+                echo "Generated embedding exists, proceed to dense retriever evaluation."
+            else
+                CUDA_VISIBLE_DEVICES=1,2,3,4,5,6,7 python generate_dense_embeddings.py \
+                    model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
+                    ctx_src=dpr_thwiki-20171217_split-${CHUNK_SIZE} \
+                    shard_id=0 num_shards=1 \
+                    batch_size=680 \
+                    out_file=/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@ |& tee -a /workspace/logs/generate_dense_embeddings/${RESULT_NAME}.log
+            fi
 
             CUDA_VISIBLE_DEVICE=1 python dense_retriever.py \
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
