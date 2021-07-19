@@ -23,7 +23,7 @@ do
                 ctx_src=dpr_thwiki-20171217_split-${CHUNK_SIZE} \
                 shard_id=0 num_shards=1 \
                 batch_size=680 \
-                out_file=/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@ |& tee -a /workspace/logs/generate_dense_embeddings/${RESULT_NAME}
+                out_file=/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@ |& tee -a /workspace/logs/generate_dense_embeddings/${RESULT_NAME}.log
 
 
             CUDA_VISIBLE_DEVICE=1 python dense_retriever.py \
