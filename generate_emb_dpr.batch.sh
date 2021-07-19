@@ -30,6 +30,8 @@ do
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_train \
                 ctx_datatsets=[dpr_thwiki-20210520_split-300] \
+                n_docs=500 \
+                do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
                 out_file=/workspace/outputs/dpr_retriever_evaluation/${EXP_NAME}/result.train
             
@@ -37,6 +39,8 @@ do
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_validation \
                 ctx_datatsets=[dpr_thwiki-20210520_split-300] \
+                n_docs=500 \
+                do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
                 out_file=/workspace/outputs/dpr_retriever_evaluation/${EXP_NAME}/result.validation
             
@@ -44,6 +48,8 @@ do
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_test \
                 ctx_datatsets=[dpr_thwiki-20210520_split-300] \
+                n_docs=500 \
+                do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
                 out_file=/workspace/outputs/dpr_retriever_evaluation/${EXP_NAME}/result.test
 
