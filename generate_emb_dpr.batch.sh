@@ -33,7 +33,7 @@ do
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_train \
                 encoder=${ENCODER} \
-                ctx_datatsets=[dpr_thwiki-20210520_split-300] \
+                ctx_datatsets=[dpr_thwiki-20171217_split-${CHUNK_SIZE}] \
                 n_docs=500 \
                 do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
@@ -43,7 +43,7 @@ do
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_validation \
                 encoder=${ENCODER} \
-                ctx_datatsets=[dpr_thwiki-20210520_split-300] \
+                ctx_datatsets=[dpr_thwiki-20171217_split-${CHUNK_SIZE}] \
                 n_docs=500 \
                 do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
@@ -53,7 +53,7 @@ do
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_test \
                 encoder=${ENCODER} \
-                ctx_datatsets=[dpr_thwiki-20210520_split-300] \
+                ctx_datatsets=[dpr_thwiki-20171217_split-${CHUNK_SIZE}] \
                 n_docs=500 \
                 do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
