@@ -29,6 +29,8 @@ do
                     out_file=/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@ |& tee -a /workspace/logs/generate_dense_embeddings/${EXP_NAME}.log
             fi
 
+            mkdir -p /workspace/outputs/dpr_retriever_evaluation/${EXP_NAME}
+
             CUDA_VISIBLE_DEVICE=1 python dense_retriever.py \
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_train \
