@@ -6,34 +6,17 @@ do
         do
 
             export HYDRA_FULL_ERROR=1
-           
-            export train_config=""
-            export train_dataset=""
-            export validation_dataset=""
             export HN_TEXT=""
             if [ $HN == 0 ]
             then
                 HN_TEXT=""
                 export EXP_NAME="exp002.v2.batched.${ENCODER}.thwiki-split_w${CHUNK_SIZE}"
-                train_dataset="thwiki_15k_split_w${CHUNK_SIZE}_train"
-                validation_dataset="thwiki_15k_split_w${CHUNK_SIZE}_validation"
             else
                 HN_TEXT="hn_bm25_${HN}_"
                 export EXP_NAME="exp002.v2.batched.${ENCODER}.thwiki-split_w${CHUNK_SIZE}_hn-${HN}"
-                train_dataset="thwiki_15k_split_w${CHUNK_SIZE}_${HN_TEXT}train"
-                validation_dataset="thwiki_15k_split_w${CHUNK_SIZE}_${HN_TEXT}validation"
-
             fi
-            mkdir -p /workspace/logs/dpr/${EXP_NAME}
-            mkdir -p /workspace/checkpoints/dpr/${EXP_NAME}
-            cd /workspace/DPR
-            rm  /workspace/logs/dpr/${EXP_NAME}/encoder_training.log
-
+            
             echo "EXP NAME: ${EXP_NAME}"
-            
-
-    
-            
 
             CUDA_VISIBLE_DEVICES=1,2,3,4,5,6,7 python generate_dense_embeddings.py \
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
