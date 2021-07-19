@@ -18,7 +18,7 @@ do
             
             echo "EXP NAME: ${EXP_NAME}"
 
-            if [ -f "/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@" ]; then
+            if [ -f "/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0" ]; then
                 echo "Generated embedding exists, proceed to dense retriever evaluation."
             else
                 CUDA_VISIBLE_DEVICES=1,2,3,4,5,6,7 python generate_dense_embeddings.py \
