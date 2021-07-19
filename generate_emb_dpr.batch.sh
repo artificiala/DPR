@@ -32,7 +32,7 @@ do
             CUDA_VISIBLE_DEVICE=1 python dense_retriever.py \
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_train \
-                encoder=${encoder} \
+                encoder=${ENCODER} \
                 ctx_datatsets=[dpr_thwiki-20210520_split-300] \
                 n_docs=500 \
                 do_lower_case=False \
@@ -42,7 +42,7 @@ do
             CUDA_VISIBLE_DEVICE=1 python dense_retriever.py \
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_validation \
-                encoder=${encoder} \
+                encoder=${ENCODER} \
                 ctx_datatsets=[dpr_thwiki-20210520_split-300] \
                 n_docs=500 \
                 do_lower_case=False \
@@ -52,7 +52,7 @@ do
             CUDA_VISIBLE_DEVICE=1 python dense_retriever.py \
                 model_file=/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best \
                 qa_dataset=thwiki_qas_15k_test \
-                encoder=${encoder} \
+                encoder=${ENCODER} \
                 ctx_datatsets=[dpr_thwiki-20210520_split-300] \
                 n_docs=500 \
                 do_lower_case=False \
