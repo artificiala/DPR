@@ -2,7 +2,7 @@ for ENCODER in hf_thwiki_20210520_bert hf_thwiki_20210520_news_bert
 do 
     for CHUNK_SIZE in 150 300
     do
-        for HN in 0 1 2 10
+        for HN in 0 1 2 10 32
         do
 
             export HYDRA_FULL_ERROR=1
@@ -34,15 +34,21 @@ do
             echo "EXP NAME: ${EXP_NAME}"
             export WANDB_PROJECT=thai2transformers_dpr
             export WANDB_RUN_NAME=$EXP_NAME
-            python -m torch.distributed.launch --nproc_per_node=4 train_dense_encoder.py \
-            train=${train_config} \
-            encoder=${ENCODER} \
-            train_datasets=[${train_dataset}] \
-            dev_datasets=[${validation_dataset}] \
-            output_dir=/workspace/checkpoints/dpr/${EXP_NAME} |& tee -a /workspace/logs/dpr/${EXP_NAME}/encoder_training.log
 
-            mv /workspace/checkpoints/dpr/${EXP_NAME}/dpr_biencoder.best /workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best
-            rm /workspace/checkpoints/dpr/${EXP_NAME}/dpr_biencoder.*
+            if [ -f "/workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best" ]; then
+                echo "Best checkpoint exists, skip this experiment setting."
+            else
+                python -m torch.distributed.launch --nproc_per_node=4 train_dense_encoder.py \
+                train=${train_config} \
+                encoder=${ENCODER} \
+                train_datasets=[${train_dataset}] \
+                dev_datasets=[${validation_dataset}] \
+                output_dir=/workspace/checkpoints/dpr/${EXP_NAME} |& tee -a /workspace/logs/dpr/${EXP_NAME}/encoder_training.log
+
+                mv /workspace/checkpoints/dpr/${EXP_NAME}/dpr_biencoder.best /workspace/checkpoints/dpr/${EXP_NAME}/_dpr_biencoder.best
+                rm /workspace/checkpoints/dpr/${EXP_NAME}/dpr_biencoder.*
+
+            fi
         done
     done
 done
