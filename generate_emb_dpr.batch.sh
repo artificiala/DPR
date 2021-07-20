@@ -2,7 +2,7 @@ for ENCODER in hf_thwiki_20210520_bert
 do 
     for CHUNK_SIZE in 150 300
     do
-        for HN in 0 1 2 10
+        for HN in 0 2 10
         do
 
             export HYDRA_FULL_ERROR=1
