@@ -36,7 +36,7 @@ do
                 qa_dataset=thwiki_qas_15k_train \
                 encoder=${ENCODER} \
                 ctx_datatsets=[dpr_thwiki-20171217_split-${CHUNK_SIZE}] \
-                n_docs=500 \
+                n_docs=1000 \
                 do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
                 out_file=/workspace/outputs/dpr_retriever_evaluation/${EXP_NAME}/result.train
@@ -46,7 +46,7 @@ do
                 qa_dataset=thwiki_qas_15k_validation \
                 encoder=${ENCODER} \
                 ctx_datatsets=[dpr_thwiki-20171217_split-${CHUNK_SIZE}] \
-                n_docs=500 \
+                n_docs=1000 \
                 do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
                 out_file=/workspace/outputs/dpr_retriever_evaluation/${EXP_NAME}/result.validation
@@ -56,7 +56,7 @@ do
                 qa_dataset=thwiki_qas_15k_test \
                 encoder=${ENCODER} \
                 ctx_datatsets=[dpr_thwiki-20171217_split-${CHUNK_SIZE}] \
-                n_docs=500 \
+                n_docs=1000 \
                 do_lower_case=False \
                 encoded_ctx_files=["/workspace/embed/dpr_wiki/embed.batched.${EXP_NAME}_best@_0"] \
                 out_file=/workspace/outputs/dpr_retriever_evaluation/${EXP_NAME}/result.test
