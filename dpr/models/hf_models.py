@@ -230,7 +230,7 @@ def get_optimizer(
 
 def get_roberta_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
     # still uses HF code for tokenizer since they are the same
-    return XLMRobertaTokenizer.from_pretrained(
+    return AutoTokenizer.from_pretrained(
         pretrained_cfg_name, do_lower_case=do_lower_case
     )
 
