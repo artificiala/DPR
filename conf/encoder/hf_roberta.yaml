@@ -1,7 +1,7 @@
 # @package _group_
 
-# model type. One of [hf_bert, pytext_bert, fairseq_roberta]
-encoder_model_type: hf_roberta
+# model type. One of [hf_bert, hf_xlm_roberta, hf_roberta, pytext_bert, fairseq_roberta]
+encoder_model_type: hf_xlm_roberta
 
 # HuggingFace's config name for model initialization
 pretrained_model_cfg: xlm-roberta-base
