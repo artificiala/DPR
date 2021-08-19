@@ -102,7 +102,7 @@ def get_xlmroberta_biencoder_components(cfg, inference_only: bool = False, **kwa
         else None
     )
 
-    tensorizer = get_xlmroberta_tensorizer(cfg)
+    tensorizer = get_roberta_tensorizer(cfg)
     return tensorizer, biencoder, optimizer
 
 
