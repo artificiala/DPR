@@ -21,6 +21,7 @@ from transformers.modeling_roberta import RobertaModel
 from transformers.optimization import AdamW
 from transformers.tokenization_bert import BertTokenizer
 from transformers.tokenization_roberta import RobertaTokenizer
+from transformers.tokenization_xlm_roberta import XLMRobertaTokenizer
 from transformers.tokenization_camembert import CamembertTokenizer
 from dpr.models.biencoder import BiEncoder
 from dpr.utils.data_utils import Tensorizer
@@ -229,7 +230,7 @@ def get_optimizer(
 
 def get_roberta_tokenizer(pretrained_cfg_name: str, do_lower_case: bool = True):
     # still uses HF code for tokenizer since they are the same
-    return RobertaTokenizer.from_pretrained(
+    return XLMRobertaTokenizer.from_pretrained(
         pretrained_cfg_name, do_lower_case=do_lower_case
     )
 
