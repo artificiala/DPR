@@ -18,10 +18,11 @@ from torch import nn
 from transformers import AutoConfig, AutoTokenizer
 from transformers.modeling_bert import BertModel, BertPreTrainedModel
 from transformers.modeling_roberta import RobertaModel
+from transformers.modeling_xlm_roberta import  XLMRobertaModel
 from transformers.optimization import AdamW
 from transformers.tokenization_bert import BertTokenizer
 from transformers.tokenization_roberta import RobertaTokenizer
-from transformers.tokenization_xlm_roberta import XLMRobertaTokenizer, XLMRobertaModel
+from transformers.tokenization_xlm_roberta import XLMRobertaTokenizer
 from transformers.tokenization_camembert import CamembertTokenizer
 from dpr.models.biencoder import BiEncoder
 from dpr.utils.data_utils import Tensorizer
