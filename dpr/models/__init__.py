@@ -25,6 +25,13 @@ def init_hf_roberta_biencoder(args, **kwargs):
     return get_roberta_biencoder_components(args, **kwargs)
 
 
+def init_hf_xlmroberta_biencoder(args, **kwargs):
+    if importlib.util.find_spec("transformers") is None:
+        raise RuntimeError('Please install transformers lib')
+    from .hf_models import get_xlmroberta_biencoder_components
+    return get_xlmroberta_biencoder_components(args, **kwargs)
+
+
 # def init_hf_bert_reader(args, **kwargs):
 #     if importlib.util.find_spec("transformers") is None:
 #         raise RuntimeError('Please install transformers lib')
@@ -52,6 +59,12 @@ def init_fairseq_roberta_biencoder(args, **kwargs):
 #     from .hf_models import get_bert_tensorizer
 #     return get_bert_tensorizer(args)
 
+def init_hf_xlmroberta_tenzorizer(args, **kwargs):
+    if importlib.util.find_spec("transformers") is None:
+        raise RuntimeError('Please install transformers lib')
+    from .hf_models import get_xlmroberta_tensorizer
+    return get_xlmroberta_tensorizer(args)
+
 
 def init_hf_roberta_tenzorizer(args, **kwargs):
     if importlib.util.find_spec("transformers") is None:
@@ -68,7 +81,7 @@ def init_hf_camembert_tenzorizer(args, **kwargs):
 BIENCODER_INITIALIZERS = {
     # 'hf_bert': init_hf_bert_biencoder,
     'hf_roberta': init_hf_roberta_biencoder,
-    'hf_xlm_roberta': init_hf_roberta_biencoder,
+    'hf_xlm_roberta': init_hf_xlmroberta_biencoder,
     'pytext_bert': init_pytext_bert_biencoder,
     'fairseq_roberta': init_fairseq_roberta_biencoder,
 }
@@ -80,7 +93,7 @@ READER_INITIALIZERS = {
 TENSORIZER_INITIALIZERS = {
     # 'hf_bert': init_hf_bert_tenzorizer,
     'hf_roberta': init_hf_camembert_tenzorizer,
-    'hf_xlm_roberta': init_hf_roberta_tenzorizer,
+    'hf_xlm_roberta': init_hf_xlmroberta_tenzorizer,
     # 'pytext_bert': init_hf_bert_tenzorizer,  # using HF's code as of now
     'fairseq_roberta': init_hf_roberta_tenzorizer,  # using HF's code as of now
 }
